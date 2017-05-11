@@ -1,0 +1,169 @@
+﻿
+<!--All code asside from the bootstrap stylesheet is written by Ethan Robinson-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="bootstrap.css">
+    <script type="text/javascript" src="script.js"></script>
+    <script type="application/json" src="pokedex.json"></script>
+    <script>
+        $(function () {
+
+            $.getJSON('pokedex.json', function (data) {
+                $.each(data.pokemon, function (i, f) {
+                    var tblRow = "<tr onclick=\"updateView(" + f.id + ")\">" + "<td>" + f.num + "</td>" +
+                     "<td>" + f.name + "</td>" + "</tr>"
+                    $(tblRow).appendTo("#pdata tbody");
+                });
+
+                document.getElementById("pokemon-name").innerHTML = data.pokemon[0].name;
+                document.getElementById("poke-img").innerHTML = "<img src=\"" + data.pokemon[0].img + "\" height=\"180px\" width=\"180px\">";
+
+            });
+
+
+        });
+    </script>
+   
+    
+    <title>Pokedex</title>
+</head>
+
+
+<body lang="en-us" onload="welcomeName(); updateView(1);">
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-offset-5" style="font-family:'Pokemon'; font-size: 300%;" >
+                    Pokedex
+
+                    <a class="btn btn-default" href="index.html" role="button" style="font-family:sans-serif;">Home</a>
+
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <div class="container">       
+            <div class="row">
+
+                <!--Search Panel-->
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" id="welcome-name">&nbsp;</div>
+
+                        <div class="panel-body" >
+                            
+                            <!--Search Results-->
+                            <div class="col-md-4">
+                                <div class="panel panel-default dex">
+                                    <div class="panel-heading text-center">
+
+                                        <!--Search Bar-->
+                                        <div class="input-group input-group-lg">
+                                            <input type="text" class="form-control" id="search">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" onclick="generateList();">Search <span aria-hidden="true">&raquo;</span></button>
+                                            </span>
+
+
+
+                                        </div>
+                                        <div class="col-md-offset">
+                                            Search by:
+                                            <span id="by-type" class="label label-default" onclick="searchByType();">Type</span>
+                                            <span id="by-name" class="label label-primary" onclick="searchByName();">Name</span>
+                                            
+                                        </div>
+                                        <!--Search Bar-->
+
+                                    </div>
+                                   
+
+                                    <div class="scrollable">
+                                        <table class="table table-striped" id="pdata">
+                                            
+                                            <tbody id="list">
+
+                                            </tbody>
+                                            
+
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                                
+                            </div><!--Search Results-->
+
+                            <!--View-->
+                            <div class="col-md-8">
+                                <div class="panel panel-default view">
+                                    <div class="panel-heading view-heading" id="pokemon-name">
+                                        Stuff
+                                    </div>
+
+                                    <div class="col-md-4" id="poke-img">
+                                        
+                                    </div>
+                                    
+                                    <div class="col-md-8">
+                                    
+                                    <label>
+                                        <input type="checkbox" id="caught" onclick="caught();"> Caught
+                                    </label>
+
+                                    <p><strong>Type: </strong> <span id="type"></span></p>
+                                    <p><strong>Height: </strong> <span id="height"></span></p>
+                                    <p><strong>Weight: </strong> <span id="weight"></span></p>
+                                    <p><strong>Candy: </strong> <span id="candy"></span></p>
+                                    <p><strong>Weaknesses: </strong> <span id="weakness"></span></p>
+
+                                    
+
+                                    </div>
+
+                                    <p>&nbsp;</p>
+
+                                    <div class="col-md-12">
+                                        <p>
+                                            <strong>Next Evolution: </strong>
+                                            <span id="nevolve">
+
+                                            </span>
+                                            <img id="nevolve-img" src="#" height="120" width="120" />
+                                        </p>
+
+                                        <p>
+                                            <strong>Evolves from: </strong> 
+                                            <span id="pevolve">
+                                            
+                                            </span>
+                                            <img id="pevolve-img" src="#" height="120" width="120" />
+                                        </p>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--View-->
+                                
+
+                        </div><!--Panel Body-->
+                    </div>
+                </div>
+
+                <!--Side Bar-->
+                
+                
+   
+        </div><!--Row-->
+    </div><!--Container-->
+</body>
+</html>

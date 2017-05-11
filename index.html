@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body onload="rememberMe();">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Login:
+                    </div>
+
+                    <div class="panel-body">
+
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="login-name" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="login-pass" placeholder="Password">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="remember"> Remember me
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-default" onclick="login();">Sign in</button>
+
+                            <!--Spacing for swag-->
+                            <p></p>
+
+                            <div class="alert alert-info text-center" role="alert" id="login-alert"><strong>User Created! Click sign in again.</strong></div>
+
+
+                        </form>
+                        
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="btn btn-default" href="references.html" role="button">Credit to other people here!</a>
+
+    </div>
+
+</body>
+</html>
